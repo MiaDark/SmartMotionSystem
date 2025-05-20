@@ -18,6 +18,9 @@ This project uses an Arduino MKR1000 and a PIR sensor to detect motion and send 
 - PIR OUT → MKR1000 Pin 2
 - Buzzer Positive → MKR1000 Pin 3
 - Buzzer Negative → MKR1000 GND
+- LED Positive → MKR1000 Pin 4
+- LED Negative → MKR1000 GND
+
 
 ## Setup Instructions
 1. **Install Arduino IDE** and libraries: `WiFi101`, `PubSubClient`.
