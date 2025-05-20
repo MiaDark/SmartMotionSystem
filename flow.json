@@ -1,0 +1,123 @@
+[
+    {
+        "id": "7b99111ee5251828",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d0795e103f5774a5",
+        "type": "mqtt in",
+        "z": "7b99111ee5251828",
+        "name": "",
+        "topic": "home/motion/entry",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "aac9e164a8ae0fba",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "50162919d5314e1f"
+            ]
+        ]
+    },
+    {
+        "id": "50162919d5314e1f",
+        "type": "function",
+        "z": "7b99111ee5251828",
+        "name": "Format Message",
+        "func": "msg.payload = {\n    status: msg.payload,\n    timestamp: new Date().toLocaleString()\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "eb510531298af299"
+            ]
+        ]
+    },
+    {
+        "id": "eb510531298af299",
+        "type": "ui_text",
+        "z": "7b99111ee5251828",
+        "group": "376afa2e409f5d74",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "Display Motion",
+        "label": "Motion Status",
+        "format": "{{msg.payload.status}} {{msg.payload.timestamp}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#000000",
+        "x": 520,
+        "y": 140,
+        "wires": [],
+        "icon": "node-red/bridge.svg"
+    },
+    {
+        "id": "aac9e164a8ae0fba",
+        "type": "mqtt-broker",
+        "name": "HiveMQ(Magnem)",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "Magnem_Dashboard",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "376afa2e409f5d74",
+        "type": "ui_group",
+        "name": "Motion Alerts",
+        "tab": "dc5e8786144a7859",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "dc5e8786144a7859",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
